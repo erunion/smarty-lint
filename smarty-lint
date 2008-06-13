@@ -1,0 +1,91 @@
+#!/usr/bin/php -q
+<?
+
+/**
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 2.1 of the License, or (at your option) any later version.
+ *
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ *
+ * @package smarty-lint
+ * @link http://code.google.com/p/smarty-lint/
+ * @author Jon Ursenbach <lorderunion@gmail.com>
+ * @version 1.0
+ */
+
+if (!isset($_SERVER["argv"]))
+	errmsg("Must be run from the command line.");
+else if (!is_array($_SERVER["argv"]) || count($_SERVER["argv"]) <= 1)
+	errmsg("usage: smarty-lint <template_file>");
+	
+foreach ($_SERVER["argv"] as $data)
+	if (strpos($data, "-h") !== false || strpos($data, "--help") !== false)
+		help();
+
+require_once dirname(__FILE__) . "/class.smarty-lint.php";
+$lint = new smarty_lint;
+for ($x=1; $x<=(count($_SERVER["argv"]) - 1); $x++)
+	$lint->check($_SERVER["argv"][$x]);
+
+	
+/**
+ * Display an error message and kill the page.
+ *
+ * @param string $error_msg
+ */
+function errmsg ( $error_msg )
+{
+	echo "smarty-lint :: error\n";
+	echo "\t" .$error_msg . "\n\n";
+	exit;
+}
+
+/**
+ * Display the help page and kill the page.
+ *
+ */
+function help ( )
+{
+	$help = <<<HELP
+NAME
+	smarty-lint - A lint implementation for the popular templating engine, Smarty.
+
+SYNOPSIS
+	smarty-lint [options] <template_file>
+	
+DESCRIPTION
+	Loading the template file, you will load it however you would normally load it
+	within your programs controllers. If you reference your template file as
+	"tplsubfolder/tplname.tpl", or "tplname.template", pass those strings into
+	smarty-lint.
+	
+OPTONS	
+	-h
+	--help\t Help
+	
+AUTHOR
+	Jon Ursenbach <lorderunion@gmail.com>
+	
+VERSION INFORMATION
+	This help blurb describes smarty-lint, version 1.0.
+	
+COPYRIGHT
+	smarty-lint is protected under the GPL v2. For information on the GPL v2 license,
+	go to: http://www.fsf.org/licensing/licenses/info/GPLv2.html
+	
+HELP;
+
+	echo $help . "\n\n";
+	exit;
+}
+
+?>
