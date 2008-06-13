@@ -73,7 +73,7 @@ class smarty_lint extends Smarty
 }
 
 /**
- * Customer error handler so we can parse out errors triggered
+ * Custom error handler so we can parse out errors triggered
  * within the Smarty compiling classes. 
  *
  * @param const $errno
