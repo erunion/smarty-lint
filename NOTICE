@@ -1,0 +1,14 @@
+smarty-lint
+Copyright 2008-2009 Jon Ursenbach
+< jon at ursenba dot ch >
+
+
+This product includes portions of The Smarty Template Engine
+developed by Monte Ohrt and Andrei Zmievski, and distributed
+under the LGPL 2.1, with which the Apache License 2.0 is
+is compatible.  Smarty is available from http://www.smarty.net/
+
+This project includes portions of vanilla-mvc developed by
+Andrew Bakun and distributred under the Apache License 2.0.
+vanilla-mvc is available from http://code.google.com/p/vanilla-mvc/
+
