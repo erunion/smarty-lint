@@ -1,5 +1,4 @@
 <?php
-
 /* Copyright 2005-2008 Andrew A. Bakun
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,24 +15,24 @@
  */
 
 class example_extensions {
-    static public function prefilter_convert_loop_breaks($tplsource, &$smarty) {
-        return preg_replace('/\{break\}/', '{php}break;{/php}', $tplsource);
+  static public function prefilter_convert_loop_breaks($tplsource, &$smarty) {
+    return preg_replace('/\{break\}/', '{php}break;{/php}', $tplsource);
+  }
+
+  static public function prefilter_convert_loop_continue($tplsource, &$smarty) {
+    return preg_replace('/\{continue\}/', '{php}continue;{/php}', $tplsource);
+  }
+
+  static public function dump_array($value, $level = -1, $html = 1) {
+    $x = var_export($value, true);
+    if ($html) {
+      $x = "<pre>" . htmlspecialchars($x) . "</pre>";
     }
 
-    static public function prefilter_convert_loop_continue($tplsource, &$smarty) {
-        return preg_replace('/\{continue\}/', '{php}continue;{/php}', $tplsource);
-    }
+    return $x;
+  }
 
-    static public function dump_array($value, $level = -1, $html = 1) {
-        $x = var_export($value, true);
-        if ($html) {
-            $x = "<pre>".htmlspecialchars($x)."</pre>";
-        }
-        return $x;
-    }
-
-    static public function modifier_printr($v) {
-        return smarty_extensions::dump_array($v, -1, 0); # no html
-    }
+  static public function modifier_printr($v) {
+    return smarty_extensions::dump_array($v, -1, 0); # no html
+  }
 }
-

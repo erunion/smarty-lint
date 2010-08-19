@@ -1,5 +1,5 @@
 smarty-lint
-Copyright 2008-2009 Jon Ursenbach
+Copyright 2010 Jon Ursenbach
 < jon at ursenba dot ch >
 
 
@@ -11,4 +11,3 @@ is compatible.  Smarty is available from http://www.smarty.net/
 This project includes portions of vanilla-mvc developed by
 Andrew Bakun and distributred under the Apache License 2.0.
 vanilla-mvc is available from http://code.google.com/p/vanilla-mvc/
-
